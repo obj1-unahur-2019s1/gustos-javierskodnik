@@ -8,8 +8,8 @@ object bolichito {
 	method ponerEnVidriera(objeto) { objetoEnVidriera = objeto }
 	
 	method esBrillante() { 
-		const elDeMostradorBrilla = true   // implementar
-		const elDeVidrieraBrilla = true   // implementar
+		const elDeMostradorBrilla = objetoEnMostrador.material().brilla()
+		const elDeVidrieraBrilla = objetoEnVidriera.mterial().brilla()
 		return elDeMostradorBrilla and elDeVidrieraBrilla
 	}
 	
@@ -18,14 +18,20 @@ object bolichito {
 	}
 	
 	method estaDesequilibrado() {
-		// completar
+		return objetoEnMostrador.peso() > objetoEnVidriera.peso()
+		
 	}
 	
 	method tieneAlgoDeColor(color) {
-		// completar
+		return objetoEnMostrador.color() == color or objetoEnVidriera.color() == color
 	}
 
-	method puedeOfrecerleAlgoA(persona) {
-		// completar
+	method puedeOfrecerleAlgo(persona) {
+		return persona.leGusta(objetoEnMostrador) or persona.leGusta(objetoEnVidriera)
+	}
+	
+	method puedeMejorar() {
+		return self.estaDesequilibrado() or self.esMonocromatico()
+		
 	}
 }
